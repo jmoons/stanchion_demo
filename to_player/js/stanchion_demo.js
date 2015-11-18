@@ -38,6 +38,16 @@ $(document).ready(function() {
     };
   });
 
+  $("#submit_ajax").on('click', function() {
+    var string_to_send = "<?xml version='1.0'?><John>Is Awesome</John>";
+    $.ajax({
+      method: "POST",
+      url: "/incoming_stanchion_data_xml",
+      data: string_to_send,
+      dataType: 'xml'
+    });
+  });
+
 });
 
 var StanchionDemo = ( function() {
