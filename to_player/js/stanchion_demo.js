@@ -45,6 +45,10 @@ $(document).ready(function() {
       url: "/incoming_stanchion_data_xml",
       data: string_to_send,
       dataType: 'xml'
+    }).done( function(data, textStatus) {
+      console.log("Post Success");
+    }).fail( function(data, textStatus) {
+      console.log("POST FAILED");
     });
   });
 
