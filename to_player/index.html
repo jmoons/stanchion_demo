@@ -9,15 +9,29 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   </head>
   <body>
-    <div id="ajax_controls" class='col-md-4'>
-      <button type="button" class="btn btn-primary ajax_button" data-request_format="json">Start AJAX Interval JSON</button>
-      <button type="button" class="btn btn-primary ajax_button" data-request_format="xml">Start AJAX Interval XML</button>
-    </div>
-    <div id="ajax_controls" class='col-md-4'>
-      <button type="button" id='submit_ajax' class="btn btn-primary" data-request_format="xml">Submit AJAX XML</button>
-    </div>
-    <div id="nada" class='col-md-4'>
-      <p> RIGHT </p>
+    <div class='col-md-12'>
+      <table class="table table-striped">
+        <tr>
+          <th>URL</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>&ltroot&gt/incoming_stanchion_data_xml</td>
+          <td>URL to POST XML content to. POST response will contain a 303 with Location</td>
+        </tr>
+        <tr>
+          <td>&ltroot&gt/incoming_stanchion_data_json</td>
+          <td>URL to POST JSON content to. POST response will contain a 303 with Location</td>
+        </tr>
+        <tr>
+          <td><a href="/outgoing_stanchion_data_xml">&ltroot&gt/outgoing_stanchion_data_xml</a></td>
+          <td>URL to GET XML content from most recent POST</td>
+        </tr>
+        <tr>
+          <td><a href="/outgoing_stanchion_data_json">&ltroot&gt/outgoing_stanchion_data_json</a></td>
+          <td>URL to GET JSON content from most recent POST</td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>

@@ -2,11 +2,11 @@ require 'sinatra'
 require 'json'
 
 get '/' do
-  "What Up Sucka, you are Home"
+  send_file 'to_player/index.html'
 end
 
-get '/homepage' do
-  send_file 'to_player/index.html'
+get '/debug' do
+  send_file 'to_player/debug.html'
 end
 
 get '/js/:file' do
@@ -18,11 +18,21 @@ get '/css/:file' do
 end
 
 get '/outgoing_stanchion_data_json' do
-  send_file 'posted_data/output.json'
+  if File.exists?('posted_data/output.json')
+    send_file 'posted_data/output.json'
+  else
+    status 404
+    send_file('to_player/four_oh_four.html')
+  end
 end
 
 get '/outgoing_stanchion_data_xml' do
-  send_file 'posted_data/output.xml'
+  if File.exists?('posted_data/output.xml')
+    send_file 'posted_data/output.xml'
+  else
+    status 404
+    send_file('to_player/four_oh_four.html')
+  end
 end
 
 post '/incoming_stanchion_data_json' do
