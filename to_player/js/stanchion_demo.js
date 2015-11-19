@@ -38,18 +38,56 @@ $(document).ready(function() {
     };
   });
 
-  $("#submit_ajax").on('click', function() {
-    var string_to_send = "<?xml version='1.0'?><John>Is Awesome</John>";
+  $(".submit_form_button").on('click', function(event) {
+
+    var button_id         = event.target.getAttribute('id')
+    var data_to_send      = null;
+    var url_to_send_to    = null;
+    var data_to_send_type = null;
+
+    if ( button_id == "submit_as_xml") {
+      url_to_send_to    = "/incoming_stanchion_data_xml";
+      data_to_send_type = "xml";
+
+      var xml_document = $.parseXML("<root/>");
+      $(".input-group-addon").each(function(index) {
+        var sibling_input       = $(this).siblings('input')[0];
+        var sibling_input_name  = sibling_input.getAttribute('name');
+
+        var new_elment = xml_document.createElement(sibling_input_name);
+        new_elment.appendChild(document.createTextNode( $(sibling_input).val()) );
+        xml_document.documentElement.appendChild(new_elment);
+      });
+
+      data_to_send = new XMLSerializer().serializeToString(xml_document)
+    } else {
+      url_to_send_to    = "/incoming_stanchion_data_json";
+      data_to_send_type = "json";
+      data_to_send      = [];
+
+      $(".input-group-addon").each(function(index) {
+        var sibling_input       = $(this).siblings('input')[0];
+        var sibling_input_name  = sibling_input.getAttribute('name');
+
+        var parameter_object = {};
+        parameter_object[sibling_input_name] = $(sibling_input).val();
+        data_to_send = data_to_send.concat(parameter_object);
+      });
+
+      data_to_send = JSON.stringify(data_to_send);
+    };
+
     $.ajax({
       method: "POST",
-      url: "/incoming_stanchion_data_xml",
-      data: string_to_send,
-      dataType: 'xml'
+      url: url_to_send_to,
+      data: data_to_send,
+      dataType: data_to_send_type
     }).done( function(data, textStatus) {
-      console.log("Post Success");
+      console.log("Success");
     }).fail( function(data, textStatus) {
-      console.log("POST FAILED");
-    });
+      console.log("FAILED TO POST");
+    })
+
   });
 
 });
