@@ -82,10 +82,12 @@ $(document).ready(function() {
       url: url_to_send_to,
       data: data_to_send,
       dataType: data_to_send_type
-    }).done( function(data, textStatus) {
+    }).done( function(data, textStatus, request) {
       console.log("Success");
+      $("#post_status").text("POST Successful");
     }).fail( function(data, textStatus) {
       console.log("FAILED TO POST");
+      $("#post_status").text("POST FAILED");
     })
 
   });
