@@ -1,13 +1,13 @@
 require 'sinatra'
 require 'json'
 
-options "*" do
-  response.headers["Allow"] = "HEAD,GET,PUT,DELETE,OPTIONS"
+# options "*" do
+#   response.headers["Allow"] = "HEAD,GET,PUT,DELETE,OPTIONS"
 
-  response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+#   response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
 
-  halt HTTP_STATUS_OK
-end
+#   halt HTTP_STATUS_OK
+# end
 
 get '/' do
   send_file 'to_player/index.html'
@@ -43,6 +43,9 @@ get '/outgoing_stanchion_data_json' do
 end
 
 get '/outgoing_stanchion_data_xml' do
+
+  headers "Access-Control-Allow-Origin" => "*"
+
   if File.exists?('posted_data/output.xml')
     send_file 'posted_data/output.xml'
   else
