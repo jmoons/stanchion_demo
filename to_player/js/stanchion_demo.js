@@ -5,10 +5,9 @@ $(document).ready(function() {
   (function poll() {
     setTimeout(function(){
       $.ajax({ 
-          // url: "http://192.168.25.100:9292/outgoing_stanchion_data_xml",
-          url: "http://shrouded-temple-8115.herokuapp.com/outgoing_stanchion_data_xml",
+          url: "http://192.168.25.100:9292/outgoing_stanchion_data_xml",
           method: "GET",
-          dataType: "json"
+          dataType: "XML"
         }).done(function(data){
           //Update your dashboard gauge
           salesGauge.setValue(data.value);
