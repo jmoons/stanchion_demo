@@ -1,8 +1,20 @@
 require 'sinatra'
 require 'json'
 
-options '/*' do
-  response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
+  AC_ALLOW_HEADERS = 'Accept, Authorization'
+  AC_ALLOW_METHODS = 'GET, POST, PUT, PATCH, DELETE OPTIONS, LINK, UNLINK'
+  AC_ALLOW_MAX_AGE = 10 * 60 # 10 minutes in seconds
+
+before do
+
+  response['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
+
+  options '*' do
+    headers 'Access-Control-Allow-Headers' => AC_ALLOW_HEADERS,
+            'Access-Control-Allow-Methods' => AC_ALLOW_METHODS,
+            'Access-Control-Max-Age'       => AC_ALLOW_MAX_AGE
+  end
+
 end
 
 get '/' do
