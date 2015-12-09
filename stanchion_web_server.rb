@@ -1,9 +1,9 @@
 require 'sinatra'
 require 'json'
 
-before do
-  headers "Access-Control-Allow-Origin" => "*"
-end
+# before do
+#   headers "Access-Control-Allow-Origin" => "*"
+# end
 
 get '/' do
   send_file 'to_player/index.html'
@@ -31,6 +31,8 @@ end
 
 get '/outgoing_stanchion_data_json' do
 
+  headers "Access-Control-Allow-Origin" => "*"
+
   if File.exists?('posted_data/output.json')
     send_file 'posted_data/output.json'
   else
@@ -40,6 +42,8 @@ get '/outgoing_stanchion_data_json' do
 end
 
 get '/outgoing_stanchion_data_xml' do
+
+  headers "Access-Control-Allow-Origin" => "*"
 
   if File.exists?('posted_data/output.xml')
     send_file 'posted_data/output.xml'
