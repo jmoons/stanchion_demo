@@ -1,6 +1,10 @@
 require 'sinatra'
 require 'json'
 
+options '/*' do
+  response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
+end
+
 get '/' do
   send_file 'to_player/index.html'
 end
@@ -9,12 +13,20 @@ get '/debug' do
   send_file 'to_player/debug.html'
 end
 
+get '/demo' do
+  send_file 'to_player/demo_index.html'
+end
+
 get '/js/:file' do
   send_file('to_player/js/'+params[:file], :disposition => 'inline')
 end
 
 get '/css/:file' do
   send_file('to_player/css/'+params[:file], :disposition => 'inline')
+end
+
+get '/images/:file' do
+  send_file('to_player/images/'+params[:file], :disposition => 'inline')
 end
 
 get '/outgoing_stanchion_data_json' do
