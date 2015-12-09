@@ -9,8 +9,7 @@ $(document).ready(function() {
           method: "GET",
           dataType: "XML"
         }).done(function(data){
-          //Update your dashboard gauge
-          salesGauge.setValue(data.value);
+          console.log("Sweet dude, you got a GET");
 
           //Setup the next poll recursively
           poll();
