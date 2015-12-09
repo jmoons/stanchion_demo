@@ -9,12 +9,12 @@ before do
 
   response['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
 
-  options '*' do
-    headers 'Access-Control-Allow-Headers' => AC_ALLOW_HEADERS,
-            'Access-Control-Allow-Methods' => AC_ALLOW_METHODS,
-            'Access-Control-Max-Age'       => AC_ALLOW_MAX_AGE
-  end
+end
 
+options '*' do
+  headers 'Access-Control-Allow-Headers' => AC_ALLOW_HEADERS,
+          'Access-Control-Allow-Methods' => AC_ALLOW_METHODS,
+          'Access-Control-Max-Age'       => AC_ALLOW_MAX_AGE
 end
 
 get '/' do
