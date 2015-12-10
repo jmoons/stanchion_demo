@@ -6,6 +6,20 @@ $(document).ready(function() {
 
 var StanchionDemo = ( function() {
 
+  var check_and_act_upon_triggered_content = function( stanchion_xml ) {
+    var golf_clubs_plu = "2000000368177";
+    var polo_shirt_plu = "200004528782";
+
+    var plus_in_stanchion_xml = $(stanchion_xml).find('numPLU').toArray();
+    plus_in_stanchion_xml.forEach( function( plu, index ) {
+      if ( $(plu).text() === golf_clubs_plu ) {
+        console.log("GOLF CLUBS!!!");
+      } else if ( $(plu).text() === polo_shirt_plu ) {
+        console.log("POLO SHIRT!!!");
+      };
+    });
+  }
+
   var begin_polling_for_data = function() {
 
     (function long_poll() {
@@ -16,7 +30,7 @@ var StanchionDemo = ( function() {
             dataType: "XML"
           }).done(function(data) {
             console.log("Sweet dude, you got a GET");
-
+            check_and_act_upon_triggered_content( data )
             //Setup the next poll recursively
             long_poll();
           }).fail(function(data) {
