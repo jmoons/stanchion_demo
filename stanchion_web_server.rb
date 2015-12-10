@@ -1,10 +1,6 @@
 require 'sinatra'
 require 'json'
 
-# before do
-#   headers "Access-Control-Allow-Origin" => "*"
-# end
-
 get '/' do
   send_file 'to_player/index.html'
 end
@@ -29,42 +25,30 @@ get '/images/:file' do
   send_file('to_player/images/'+params[:file], :disposition => 'inline')
 end
 
-get '/outgoing_stanchion_data_json' do
-
+get '/outgoing_stanchion_data_*' do
   headers "Access-Control-Allow-Origin" => "*"
 
-  if File.exists?('posted_data/output.json')
-    send_file 'posted_data/output.json'
+  type = params['splat'][0]
+
+  if File.exists?("posted_data/output.#{type}")
+    send_file "posted_data/output.#{type}"
   else
     status 404
-    send_file('to_player/four_oh_four.html')
   end
 end
 
-get '/outgoing_stanchion_data_xml' do
+post '/incoming_stanchion_data_*' do
+  type = params['splat'][0]
 
-  headers "Access-Control-Allow-Origin" => "*"
+  content_type type.to_sym
+  output_file( request.body.read, type )
 
-  if File.exists?('posted_data/output.xml')
-    send_file 'posted_data/output.xml'
-  else
-    status 404
-    send_file('to_player/four_oh_four.html')
-  end
+  redirect "/outgoing_stanchion_data_#{type}", 303
 end
 
-post '/incoming_stanchion_data_json' do
-  content_type :json
-  output_file( request.body.read, "json" )
-
-  redirect '/outgoing_stanchion_data_json', 303
-end
-
-post '/incoming_stanchion_data_xml' do
-  content_type :xml
-  output_file( request.body.read, "xml" )
-
-  redirect '/outgoing_stanchion_data_xml', 303
+after '/outgoing_stanchion_data_*' do
+  type = params['splat'][0]
+  Thread.new{ sleep 1; remove_file( type ) }
 end
 
 def output_file(content, type)
@@ -72,4 +56,8 @@ def output_file(content, type)
   File.open("posted_data/output.#{type}", 'w') do | file |
     file.write(content)
   end
+end
+
+def remove_file(type)
+  File.delete("posted_data/output.#{type}") if File.exists?("posted_data/output.#{type}")
 end
