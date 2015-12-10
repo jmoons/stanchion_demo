@@ -29,13 +29,14 @@ var StanchionDemo = ( function() {
             method: "GET",
             dataType: "XML"
           }).done(function(data) {
-            console.log("Sweet dude, you got a GET");
+            console.log("GET SUCCESS");
             check_and_act_upon_triggered_content( data )
+          }).fail(function(data) {
+            console.log("GET FAILED");
+          }).always(function(data) {
+            console.log("GET ALWAYS - REPOLLING");
             //Setup the next poll recursively
             long_poll();
-          }).fail(function(data) {
-            console.log("GET FAILED - RELOADING");
-            document.location.reload(true);
           });
       }, (StanchionDemo.POLLING_RATE_SECONDS * 1000) );
     })();
