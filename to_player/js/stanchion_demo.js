@@ -24,7 +24,8 @@ var StanchionDemo = ( function() {
     var polo_shirt_plu = "200004528782";
 
     var plus_in_stanchion_xml = $(stanchion_xml).find('numPLU').toArray();
-    var found_matching_plu = false;
+    var found_matching_plu    = false;
+
     plus_in_stanchion_xml.forEach( function( plu, index ) {
       if ( $(plu).text() === golf_clubs_plu ) {
         found_matching_plu = true;
