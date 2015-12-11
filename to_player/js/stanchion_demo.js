@@ -70,9 +70,10 @@ var StanchionDemo = ( function() {
   return {
     initialize_demo: function() {
 
+      // this.IP_ADDRESS_TO_USE                  = "https://shrouded-temple-8115.herokuapp.com";
       this.IP_ADDRESS_TO_USE                  = "http://192.168.25.100:9292";
-      this.POLLING_RATE_SECONDS               = 3;
-      this.TRIGGERED_CONTENT_DISPLAY_SECONDS  = 10;
+      this.POLLING_RATE_SECONDS               = 5;
+      this.TRIGGERED_CONTENT_DISPLAY_SECONDS  = 5;
 
       begin_polling_for_data();
 
