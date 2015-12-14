@@ -46,10 +46,10 @@ post '/incoming_stanchion_data_*' do
   redirect "/outgoing_stanchion_data_#{type}", 303
 end
 
-# after '/outgoing_stanchion_data_*' do
-#   type = params['splat'][0]
-#   Thread.new{ sleep 1; remove_file( type ) }
-# end
+after '/outgoing_stanchion_data_*' do
+  type = params['splat'][0]
+  Thread.new{ sleep 1; remove_file( type ) }
+end
 
 def output_file(content, type)
   Dir.mkdir("posted_data") unless Dir.exists?("posted_data")
