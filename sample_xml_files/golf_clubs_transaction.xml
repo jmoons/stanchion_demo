@@ -92,7 +92,7 @@
           <flgExchMultiply>true</flgExchMultiply>
           <flgResume>false</flgResume>
           <idtAction>PLU</idtAction>
-          <idtArticle>2000000368177</idtArticle><!-- item  code-->
+          <idtArticle>2000031744865</idtArticle><!-- item  code-->
           <idtCampaign/>
           <idtClassification>01.001.0001</idtClassification><!-- department code-->
           <idtCredCoup>0</idtCredCoup>
@@ -103,7 +103,7 @@
           <idtVATCode>-1</idtVATCode>
           <numCoupon>0</numCoupon>
           <numLinePrint>0</numLinePrint>
-          <numPLU>2000000368177</numPLU><!-- Golf Clubs Plu Code-->
+          <numPLU>2000031744865</numPLU><!-- Golf Clubs Plu Code-->
           <pctDiscount>0.00</pctDiscount>
           <pctVAT>0.00</pctVAT>
           <prcExclVAT>19.9900</prcExclVAT>

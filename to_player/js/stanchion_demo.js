@@ -20,19 +20,17 @@ var StanchionDemo = ( function() {
   }
 
   var check_and_act_upon_triggered_content = function( stanchion_xml ) {
-    var golf_clubs_plu = "2000000368177";
-    var polo_shirt_plu = "200004528782";
 
     var plus_in_stanchion_xml = $(stanchion_xml).find('numPLU').toArray();
     var found_matching_plu    = false;
 
     plus_in_stanchion_xml.forEach( function( plu, index ) {
-      if ( $(plu).text() === golf_clubs_plu ) {
+      if ( $(plu).text() === StanchionDemo.GOLF_CLUBS_PLU ) {
         found_matching_plu = true;
         console.log("GOLF CLUBS!!!");
         $("#image_container").css( 'background-image', 'url(images/necam-fs-golf.png)' );
         stage_triggered_content();
-      } else if ( $(plu).text() === polo_shirt_plu ) {
+      } else if ( $(plu).text() === StanchionDemo.POLO_SHIRT_PLU ) {
         found_matching_plu = true;
         console.log("POLO SHIRT!!!");
         $("#image_container").css( 'background-image', 'url(images/necam-fs-apparel.png)' );
@@ -75,6 +73,8 @@ var StanchionDemo = ( function() {
       this.IP_ADDRESS_TO_USE                  = "http://192.168.25.100:9292";
       this.POLLING_RATE_SECONDS               = 5;
       this.TRIGGERED_CONTENT_DISPLAY_SECONDS  = 5;
+      this.GOLF_CLUBS_PLU                     = "2000031744865";
+      this.POLO_SHIRT_PLU                     = "2000002434023";
 
       begin_polling_for_data();
 

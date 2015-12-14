@@ -48,7 +48,7 @@
           <flgExchMultiply>true</flgExchMultiply>
           <flgResume>false</flgResume>
           <idtAction>PLU</idtAction>
-          <idtArticle>200004528782</idtArticle><!-- item  code-->
+          <idtArticle>2000002434023</idtArticle><!-- item  code-->
           <idtCampaign/>
           <idtClassification>01.001.0001</idtClassification> <!-- department code-->
           <idtCredCoup>0</idtCredCoup>
@@ -59,7 +59,7 @@
           <idtVATCode>-1</idtVATCode>
           <numCoupon>0</numCoupon>
           <numLinePrint>0</numLinePrint>
-          <numPLU>200004528782</numPLU><!-- Polo Shirt Plu Code-->
+          <numPLU>2000002434023</numPLU><!-- Polo Shirt Plu Code-->
           <pctDiscount>0.00</pctDiscount>
           <pctVAT>0.00</pctVAT>
           <prcExclVAT>14.9900</prcExclVAT>
