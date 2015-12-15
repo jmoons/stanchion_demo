@@ -96,7 +96,7 @@ var StanchionDemo = ( function() {
       this.GOLF_BACKGROUND_URL                = 'url(images/necam-fs-golf.jpg)'
       this.APPAREL_BACKGROUND_URL             = 'url(images/necam-fs-apparel.jpg)'
 
-      begin_polling_for_data();
+      reset_to_default();
 
     }
   }
