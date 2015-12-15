@@ -62,14 +62,15 @@ var StanchionDemo = ( function() {
           }).done(function( data, response_text, request_headers ) {
             console.log("GET SUCCESS");
             window.clearTimeout( timer );
-            if ( request_headers.getResponseHeader("MD5_SUM") === StanchionDemo.last_seen_md5 ) {
+            var request_header_last_modified = request_headers.getResponseHeader( "Last-Modified" );
+            if ( request_header_last_modified === StanchionDemo.last_modified_post ) {
               // Do Nothing
-              console.log("MATCHING MD5 - Continue Polling");
+              console.log("MATCHING Last-Modified - Continue Polling");
               long_poll();
             } else {
-              console.log("DIFFERING MD5 - Checking for Triggered Content");
-              // Update the last-seen MD5
-              StanchionDemo.last_seen_md5 = request_headers.getResponseHeader("MD5_SUM");
+              console.log("DIFFERING Last-Modified - Checking for Triggered Content");
+              // Update the last-seen Last-Modified
+              StanchionDemo.last_modified_post = request_header_last_modified;
               check_and_act_upon_triggered_content( data )
             };
           }).fail(function(data) {

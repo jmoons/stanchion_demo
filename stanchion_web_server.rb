@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'json'
-require 'digest/md5'
 
 get '/' do
   send_file 'to_player/index.html'
@@ -32,8 +31,6 @@ get '/outgoing_stanchion_data_*' do
   type = params['splat'][0]
 
   if File.exists?("posted_data/output.#{type}")
-    headers "MD5_SUM"                       => Digest::MD5.hexdigest(File.read("posted_data/output.#{type}"))
-    headers "Access-Control-Expose-Headers" => "MD5_SUM"
     send_file "posted_data/output.#{type}"
   else
     status 404
