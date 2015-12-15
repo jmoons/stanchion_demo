@@ -7,10 +7,6 @@ $(document).ready(function() {
 var StanchionDemo = ( function() {
 
   var stage_triggered_content = function( triggered_content_to_stage ) {
-    // var timeout = setTimeout( function() {
-    //   window.clearTimeout(timeout);
-    //   reset_to_default();
-    // }, StanchionDemo.TRIGGERED_CONTENT_DISPLAY_SECONDS * 1000);
 
     function display_triggered_content() {
       $("#image_container").css( 'background-image', triggered_content_to_stage.shift() );
@@ -71,12 +67,11 @@ var StanchionDemo = ( function() {
               console.log("MATCHING MD5 - Continue Polling");
               long_poll();
             } else {
-              console.log("DIFFERING MD5 - CHECKING");
+              console.log("DIFFERING MD5 - Checking for Triggered Content");
               // Update the last-seen MD5
               StanchionDemo.last_seen_md5 = request_headers.getResponseHeader("MD5_SUM");
               check_and_act_upon_triggered_content( data )
             };
-            // check_and_act_upon_triggered_content( data )
           }).fail(function(data) {
             console.log("GET FAILED");
             window.clearTimeout( timer );
