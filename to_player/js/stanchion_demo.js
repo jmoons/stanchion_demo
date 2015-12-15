@@ -23,7 +23,7 @@ var StanchionDemo = ( function() {
 
   var reset_to_default = function() {
     console.log("RESET TO DEFAULT");
-    $("#image_container").css( 'background-image', 'url(images/necam-fs-default.png)' );
+    $("#image_container").css( 'background-image', StanchionDemo.DEFAULT_BACKGROUND_URL );
     begin_polling_for_data();
   }
 
@@ -36,10 +36,10 @@ var StanchionDemo = ( function() {
     plus_in_stanchion_xml.forEach( function( plu, index ) {
       if ( $(plu).text() === StanchionDemo.GOLF_CLUBS_PLU ) {
         console.log("GOLF CLUBS!!!");
-        triggered_content_to_stage.push('url(images/necam-fs-golf.png)')
+        triggered_content_to_stage.push( StanchionDemo.GOLF_BACKGROUND_URL )
       } else if ( $(plu).text() === StanchionDemo.POLO_SHIRT_PLU ) {
         console.log("POLO SHIRT!!!");
-        triggered_content_to_stage.push('url(images/necam-fs-apparel.png)')
+        triggered_content_to_stage.push( StanchionDemo.APPAREL_BACKGROUND_URL )
       }
     });
 
@@ -87,11 +87,14 @@ var StanchionDemo = ( function() {
     initialize_demo: function() {
 
       // this.IP_ADDRESS_TO_USE                  = "https://shrouded-temple-8115.herokuapp.com";
-      this.IP_ADDRESS_TO_USE                  = "http://192.168.25.13:9292";
+      this.IP_ADDRESS_TO_USE                  = "http://192.168.25.100:9292";
       this.POLLING_RATE_SECONDS               = 5;
       this.TRIGGERED_CONTENT_DISPLAY_SECONDS  = 5;
       this.GOLF_CLUBS_PLU                     = "2000031744865";
       this.POLO_SHIRT_PLU                     = "2000002434023";
+      this.DEFAULT_BACKGROUND_URL             = 'url(images/necam-fs-default.jpg)'
+      this.GOLF_BACKGROUND_URL                = 'url(images/necam-fs-golf.jpg)'
+      this.APPAREL_BACKGROUND_URL             = 'url(images/necam-fs-apparel.jpg)'
 
       begin_polling_for_data();
 
