@@ -1,0 +1,10 @@
+<presentation>
+  <target name="main" device="display1" bottom="1080" top="0" left="0" right="1920" opacity="100" level="1" key="yes">
+    <!-- STARTING key zone P3103_L1_Z1 in layout "untitled 1" -->
+    <operation function="render" mediaType="html" mediaSource="file:///media/demo_index.html" duration="300.0s" record="YES" mediaID="16796" volume="100"/>
+    <!-- There are no continuing zones from "untitled 1" -->
+    <!-- DONE P3103_L1_Z1 -->
+
+    <operation function="rewindTarget"/>
+  </target>
+</presentation>
