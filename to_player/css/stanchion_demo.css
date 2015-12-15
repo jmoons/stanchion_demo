@@ -1,3 +1,7 @@
 #image_container {
   height: 1080px;
 }
+
+#preload_image_0, #preload_image_1, #preload_image_2 {
+  display: none;
+}

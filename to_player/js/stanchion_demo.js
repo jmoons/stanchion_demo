@@ -83,6 +83,13 @@ var StanchionDemo = ( function() {
 
   }
 
+  var preload_images = function() {
+    var images_to_preload = [ StanchionDemo.DEFAULT_BACKGROUND_URL, StanchionDemo.GOLF_BACKGROUND_URL, StanchionDemo.APPAREL_BACKGROUND_URL ];
+    images_to_preload.forEach(function(image_url, index) {
+      $("#preload_image_" + index).css( 'background-image', image_url )
+    });
+  }
+
   return {
     initialize_demo: function() {
 
@@ -92,9 +99,11 @@ var StanchionDemo = ( function() {
       this.TRIGGERED_CONTENT_DISPLAY_SECONDS  = 5;
       this.GOLF_CLUBS_PLU                     = "2000031744865";
       this.POLO_SHIRT_PLU                     = "2000002434023";
-      this.DEFAULT_BACKGROUND_URL             = 'url(images/necam-fs-default.jpg)'
-      this.GOLF_BACKGROUND_URL                = 'url(images/necam-fs-golf.jpg)'
-      this.APPAREL_BACKGROUND_URL             = 'url(images/necam-fs-apparel.jpg)'
+      this.DEFAULT_BACKGROUND_URL             = 'url(images/necam-fs-default.png)'
+      this.GOLF_BACKGROUND_URL                = 'url(images/necam-fs-golf.png)'
+      this.APPAREL_BACKGROUND_URL             = 'url(images/necam-fs-apparel.png)'
+
+      preload_images();
 
       reset_to_default();
 
